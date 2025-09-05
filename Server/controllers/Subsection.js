@@ -19,7 +19,6 @@ exports.createSubSection = async (req,res)=>{
                 message:'All fields are required',
             });
         }
-        console.log('ye video hai bhai',video);
         // upload video to cloudinary
         const uploadDetails = await uploadImageToCloudinary(video, process.env.FOLDER_NAME);
         // create a sub-section'
@@ -36,8 +35,6 @@ exports.createSubSection = async (req,res)=>{
                                                         subSection:subSectionDetails._id,
                                                     }},
                                                     {new:true}).populate("subSection")
-        // HW: log ipdated section here, after adding populated query 
-        // return response
         return res.status(200).json({
             success:true,
             message:'Sub Section created successfully',
@@ -54,9 +51,7 @@ exports.createSubSection = async (req,res)=>{
     }
 }
 
-//HW: TODO updateSubSection
 
-//HW: TODO deleteSubsection
 
 
 exports.updateSubSection = async (req, res) => {

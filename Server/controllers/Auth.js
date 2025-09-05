@@ -43,10 +43,8 @@ exports.sentOTP = async (req,res)=>{
     while(result){
       otp = otpGenerator.generate(6,{
         upperCaseAlphabets:false,
-        // lowerCaseAlphabets:false,
-        // specialChars:false,
+        
       });
-    //   result = await OTP.findOne({otp:otp});
    }
 
    const otpPayload = {email,otp};
@@ -197,8 +195,7 @@ exports.login = async (req,res)=>{
             });
         }
 
-        // user check exist or not
-        // const user = await User.findOne({email}).populate("additionalDetails");
+        
         const user = await User.findOne({ email }).populate("additionalDetails");
         if(!user){
             return res.status(401).json({
@@ -208,14 +205,10 @@ exports.login = async (req,res)=>{
         }
         // generate JWT, after password matching 
         if(await bcrypt.compare(password,user.password)){
-            // const payload = {
-            //     email : user.email,
-            //     id: user._id,
-            //     accountType:user.accountType,
-            // }
+            
             const token = jwt.sign( 
                 {email:user.email, id: user._id, accountType: user.accountType},
-                // payload,process.env.JWT_SECRET,{
+                
                 process.env.JWT_SECRET,
                 {
                     expiresIn :"24h",

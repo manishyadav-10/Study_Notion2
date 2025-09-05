@@ -299,8 +299,6 @@ export default function CourseInformationForm() {
       />
       {/* Course Thumbnail Image */}
       <Upload
-        // name="courseImage"
-        // chatgpt
           name="thumbnailImage"
 
         label="Course Thumbnail"

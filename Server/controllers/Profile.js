@@ -7,101 +7,8 @@ const {uploadImageToCloudinary} = require("../utils/imageUploader");
 const mongoose = require("mongoose")
 const { convertSecondsToDuration } = require("../utils/secToDuration")
 
-// exports.updateProfile = async (req,res)=>{
-//     try{
-//         // get data
-//          const {dateOfBirth="", about="", contactNumber, gender} = req.body;
-//         // get userId
-//         const id = req.user.id;
-//         // validation
-//         if(!contactNumber || !gender || !id){
-//             return res.status(400).json({
-//                  success:false,
-//                  message:'All fields are required',
-//             });
-//         }
-//         // find profile
-//         const userDetails = await User.findById(id);
-//         const profileId = userDetails.addtionalDetails;
-//         const profileDetails = await Profile.findById(profileId);
-
-//         // update profile
-//         profileDetails.dateOfBirth = dateOfBirth;
-//         profileDetails.about = about;
-//         profileDetails.gender = gender;
-//         profileDetails.contactNumber = contactNumber;
-//         await profileDetails.save();
-
-//         // return response
-//         return res.status(200).json({
-//             success:true,
-//             message:'Profile Updated Successfully',
-//             profileDetails,
-//        });
-//     }
-//     catch(error){
-//         return res.status(400).json({
-//             success:false,
-//             error: error.message,
-//        });
-//     }
-// };
 
 
-
-
-// Delete Account funtion 
-// Explore ->>> how can we  schedule this deletion
-
-// exports.updateProfile = async (req, res) => {
-//   try {
-//     const {
-//       firstName = "",
-//       lastName = "",
-//       dateOfBirth = "",
-//       about = "",
-//       contactNumber = "",
-//       gender = "",
-//     } = req.body
-//     const id = req.user.id
-
-//     // Find the profile by id
-//     const userDetails = await User.findById(id)
-//     const profile = await Profile.findById(userDetails.additionalDetails)
-
-//     const user = await User.findByIdAndUpdate(id, {
-//       firstName,
-//       lastName,
-//     })
-//     await user.save()
-
-//     // Update the profile fields
-//     profile.dateOfBirth = dateOfBirth
-//     profile.about = about
-//     profile.contactNumber = contactNumber
-//     profile.gender = gender
-
-//     // Save the updated profile
-//     await profile.save()
-
-//     // Find the updated user details
-//     const updatedUserDetails = await User.findById(id)
-//       .populate("additionalDetails")
-//       .exec()
-
-//     return res.json({
-//       success: true,
-//       message: "Profile updated successfully",
-//       updatedUserDetails,
-//     })
-//   } catch (error) {
-//     console.log(error)
-//     return res.status(500).json({
-//       success: false,
-//       error: error.message,
-//     })
-//   }
-// }
 exports.updateProfile = async (req, res) => {
   try {
     const {
@@ -262,33 +169,6 @@ exports.updateDisplayPicture = async (req, res) => {
     }
 };
   
-
-
-// exports.getEnrolledCourses = async (req, res) => {
-//     try {
-//       const userId = req.user.id
-//       const userDetails = await User.findOne({
-//         _id: userId,
-//       })
-//         .populate("courses")
-//         .exec()
-//       if (!userDetails) {
-//         return res.status(400).json({
-//           success: false,
-//           message: `Could not find user with id: ${userDetails}`,
-//         })
-//       }
-//       return res.status(200).json({
-//         success: true,
-//         data: userDetails.courses,
-//       })
-//     } catch (error) {
-//       return res.status(500).json({
-//         success: false,
-//         message: error.message,
-//       })
-//     }
-// };
 
 exports.getEnrolledCourses = async (req, res) => {
   try {
